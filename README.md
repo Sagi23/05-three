@@ -19,7 +19,7 @@ type the following command in the terminal to install dependencies
 Install the dependencies:
 
 ```bash
-$ pip install -r requirements.txt
+$ pip3 install -r requirements.txt
 ```
 
 Change database config so it can connect to your local postgres database
@@ -34,6 +34,13 @@ database_setup = {
    "password" : "testpassword123", # if applicable. If no password, just type in None
    "port" : "localhost:5432" # default postgres port
 }
+```
+
+To add env variable run
+
+```bash
+$ source setup.sh
+$ python your_python_file.py
 ```
 
 Once the dependencies finished to download and you made the config changes run the following command

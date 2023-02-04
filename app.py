@@ -1,11 +1,21 @@
 import os
 import sys
-from flask import Flask, request, abort, jsonify
+from flask import (
+                Flask, 
+                request, 
+                abort, 
+                jsonify
+                )
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from auth.auth import AuthError, requires_auth
-from models import db, Actor, Movie, setup_db
+from models import (
+                  db, 
+                  Actor, 
+                  Movie, 
+                  setup_db
+                  )
 
 def create_app(test_config=None):
   # create and configure the app
@@ -16,10 +26,23 @@ def create_app(test_config=None):
 
 
 
+  '''
+***************************************
+END POINTS
+***************************************
+  '''
 
-# ***************************************
-# ACTORS END POINTS
-# ***************************************
+  @app.route('/')
+  def index():
+    return jsonify({'message': 'Welcome to My api_name'})
+
+
+  '''
+***************************************
+ACTORS END POINTS
+***************************************
+  '''
+
 
   @app.route("/actors", methods=["GET"])
   @requires_auth("get:actors")
@@ -174,10 +197,11 @@ def create_app(test_config=None):
         db.session.close()
 
 
-
-  # ***************************************
-  # MOVIES END POINTS
-  # ***************************************
+  '''
+  ***************************************
+  MOVIES END POINTS
+  ***************************************
+  '''
 
   @app.route("/movies", methods=["GET"])
   @requires_auth("get:movies")
